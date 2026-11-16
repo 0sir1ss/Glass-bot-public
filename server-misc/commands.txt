@@ -1,0 +1,33 @@
+screen:
+screen -ls
+screen -S 1468 -X sessionname Glass
+screen -X -S 1468 kill
+
+postgres:
+find / -name "postgresql.conf" - Edit the "max_connections" value to a higher number
+find / -name "pg_hba.conf" - Edit who can connect to db
+/etc/postgresql/12/main - DB location
+sudo service postgresql restart
+
+sudo -u postgres psql
+create table public.user_warning (member_id bigint,count integer);
+create table public.xp (user_guild bigint,user_id bigint,guild_id bigint,xp integer,level integer);
+select * from pg_catalog.pg_tables where schemaname != 'information_schema' and schemaname != 'pg_catalog';
+
+
+systemd:
+sudo nano /etc/systemd/system/Glass.service
+sudo systemctl restart Glass
+sudo systemctl daemon-reload
+sudo systemctrl start Glass
+sudo systemctrl enable Glass
+sudo systemctrl disable Glass
+sudo systemctrl stop Glass
+
+venv:
+python3 -m venv env
+source env/bin/activate
+
+git:
+git clone https://github.com/0sir1ss/Glass.git - Glass Repo
+git pull origin master - update the vps
